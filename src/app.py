@@ -20,3 +20,12 @@ lz_uri = 'spotify:artist:2o5jDhtHVPhrJdv3cEQ99Z'
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=client_id,client_secret=client_secret))
 results = spotify.artist_top_tracks(lz_uri)
 
+canciones=[]
+popularidad=[]
+duracion=[]
+
+for track in results['tracks'][:10]:
+    print('track    : ' + track['name'])
+    canciones.append(track['name'])
+    popularidad.append(track['popularity'])
+    duracion.append(track['duration_ms']/(1000*60)%60)
